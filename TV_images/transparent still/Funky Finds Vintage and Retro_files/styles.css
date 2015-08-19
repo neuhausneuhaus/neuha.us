@@ -1,0 +1,74 @@
+@charset "UTF-8";
+/* CSS Document */
+
+ body {
+	background-color: #000;
+}
+
+a img
+{
+  border:none;
+}
+
+#container {
+	background-color: #000;
+	position: relative;
+	width:100%;
+	margin:0 auto;
+}
+#screen {
+	position: absolute;
+	z-index: 10;
+	left: 214px;
+	top: 64px;
+	overflow: hidden;
+}
+#TV {
+	position: absolute;
+	z-index: 50;
+	left: -7px;
+	top: 0px;
+}
+#slideimages {
+	position: absolute;
+	left: 35px;
+	top: 1px;
+}
+#homediv {
+	position: absolute;
+	z-index: 80;
+	left: 992px;
+	top: 71px;
+}
+#menu {
+	position: absolute;
+	z-index: 90;
+	left: 1051px;
+	top: 216px;
+	padding:0;
+	margin:0;
+	
+} 
+#menu li { 
+	list-style-type:none;
+	
+}
+
+#t {
+	position: absolute;
+	z-index: 50;
+	left: 7px;
+	top: -12px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+}
+#thumb {
+	position: absolute;
+	visibility: hidden;
+	z-index: 0;
+	top: 145px;
+	right: 574px;
+	color: #000;
+}
