@@ -1,2 +1,10 @@
+branch-defaults:
+  master:
+    environment: null
 global:
+  application_name: PortfolioSite
+  default_ec2_keyname: aws-eb
+  default_platform: Node.js
+  default_region: us-west-2
   profile: eb-cli
+  sc: git

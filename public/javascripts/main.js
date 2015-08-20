@@ -1,4 +1,8 @@
-console.log("main.js is online")
+// Instructions content:
+var dial1text = "<p>caseworker login: caseworker1@gmail.com<br>password: password1</p><p>donor login: donor1@gmail.com<br>password: password1</p>"
+var dial2text = "<p>professor login: philco@ga.co<br>password: phil</p><p>student login: neuhaus87@gmail.com<br>password: david</p>"
+var dial3text = "Have Fun!</p>"
+
 
 
 
@@ -9,7 +13,10 @@ $(document).ready(function(e) {
   $("area[href^=#]").on("click", function(e){
     e.preventDefault()
     var destination = $(this).attr("href").replace("#", "")
-    $("iframe").attr("src", destination)
+    var dial = $(this).attr("alt")
+    $("iframe").attr("src", destination);
+    openPanel();
+    printInstructions(dial);
     loadingSequence();
 
   });
@@ -22,6 +29,19 @@ $(document).ready(function(e) {
 
 // on page load, gif is neuhausneuhaus
 
+var openPanel = function(){
+  $("#panel-cover").attr("class","animated flipOutX");
+}
+
+var printInstructions = function(dial){
+  if (dial == "dial1"){
+    $("#instruction-content").html(dial1text)
+  } else if (dial == "dial2"){
+    $("#instruction-content").html(dial2text)
+  } else if (dial == "dial3"){
+    $("#instruction-content").html(dial3text)
+  }
+}
 
 var loadingSequence = function(iframe) {
   // #loading-gif attr display inline (or change zindex?)

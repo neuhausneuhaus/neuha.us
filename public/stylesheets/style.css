@@ -48,9 +48,9 @@
 #panel-cover{
   position: absolute;
   z-index: 3;
-  top:4.5%;
-  right:1.5%;
-  height:45.5%;
+  top:19.5%;
+  right:1.7%;
+  height:28.6%;
   /*display:none;*/
 }
 
@@ -61,7 +61,6 @@
   left:81%;
   height:37.5%;
   color:lightgrey;
-  font-size: 100%;
   pointer-events:none;
 }
 
@@ -76,3 +75,45 @@
   vertical-align: middle;
   font-size: 1.1vw;
 }
+
+#instructions{
+  position: absolute;
+  z-index: 0;
+  top:26.3%;
+  left:82%;
+  height:19%;
+  width: 14%;
+  font-family: 'VT323';
+  /*word-spacing: -2px;*/
+
+
+  color: #77FFDA;
+  opacity:0.5;
+/*   -webkit-text-fill-color: #77FFDA;
+   -webkit-text-stroke-width: .5px;
+   -webkit-text-stroke-color: #00CF60;*/
+}
+
+#instruction-header{
+  margin-bottom: .5vw;
+  font-size: 1.5vw;
+  font-weight: bold;
+}
+
+#instruction-content{
+  font-size: 1.1vw;
+  margin:0;
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
+
+}
+
+#instruction-content p{
+  margin-bottom: 1vw;
+  line-height: 1.3vw;
+}
+
+/*#instruction-content br{
+  font-size: .2vw;
+  line-height: 0;
+}*/
