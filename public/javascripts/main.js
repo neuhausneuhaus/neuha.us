@@ -16,6 +16,7 @@ $(document).ready(function(e) {
     var dial = $(this).attr("alt")
     $("iframe").attr("src", destination);
     openPanel();
+    lightblink();
     printInstructions(dial);
     loadingSequence();
 
@@ -31,6 +32,16 @@ $(document).ready(function(e) {
 
 var openPanel = function(){
   $("#panel-cover").attr("class","animated flipOutX");
+}
+
+var lightblink = function(){
+  for (var i=0; i< 500; i++){
+    (function(n){
+      window.setTimeout(function(){
+        $("#red-light").toggle()
+      }, (n*500))
+    })(i)
+  }
 }
 
 var printInstructions = function(dial){

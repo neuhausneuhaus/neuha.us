@@ -54,6 +54,15 @@
   /*display:none;*/
 }
 
+
+#red-light {
+  position: absolute;
+  top: 20.6%;
+  height: 3.7%;
+  right: 2.5%;
+  display:none;
+}
+
 .dial-labels{
   position: absolute;
   z-index: 0 ;
@@ -87,7 +96,7 @@
   /*word-spacing: -2px;*/
 
 
-  color: #77FFDA;
+  color: white;
   opacity:0.5;
 /*   -webkit-text-fill-color: #77FFDA;
    -webkit-text-stroke-width: .5px;
@@ -113,7 +122,3 @@
   line-height: 1.3vw;
 }
 
-/*#instruction-content br{
-  font-size: .2vw;
-  line-height: 0;
-}*/
