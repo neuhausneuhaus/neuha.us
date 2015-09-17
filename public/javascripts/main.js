@@ -56,26 +56,44 @@ var printInstructions = function(dial){
 
 var loadingSequence = function(iframe) {
   // #loading-gif attr display inline (or change zindex?)
-  
+
   var randomGif = function(){
     return "/images/loadinggifs/giphy" + Math.floor(Math.random() * (38))+".gif";
-  }
+  };
+  var randomLoopGif = function (){
+    return "/images/loadinggifs/loading" + Math.floor(Math.random() * (6))+".gif"
+  };
 
-  $("#loading-gif").show();
-
-  $("#loading-gif").attr("src", randomGif());
-  setTimeout(function(){
-    $("#loading-gif").attr("src", randomGif())
-  }, 400);
-  setTimeout(function(){
-    $("#loading-gif").attr("src", randomGif())
-  }, 1400);
-  setTimeout(function(){
+  $("iframe").load(function() {
     $("#loading-gif").hide();
-    $("iframe").show(); 
-  }, 1900);
+    $("iframe").show();
 
-  // until iframe loaded, short gif, long gif, short gif...
+    // $("#loading-text").hide();//loadeventtest
+    // $("#loaded-text").show();//loadeventtest
+
+  });    
+
+
+    $("#loading-gif").show();
+
+    $("#loading-gif").attr("src", randomGif());
+    setTimeout(function(){
+      $("#loading-gif").attr("src", randomGif())
+    }, 400);
+    setTimeout(function(){
+      $("#loading-gif").attr("src", randomGif())
+    }, 1400);
+    setTimeout(function(){
+      $("#loading-gif").attr("src", randomLoopGif())
+    }, 1900);
+    // setTimeout(function(){
+    //   $("#loading-gif").hide();
+    //   $("iframe").show(); 
+    // }, 1900);
+
+
+
+  // until iframe loaded, short gif, long gif, short gif then looping gif...
   // #loading-gif attr display none
 }
 
