@@ -17,10 +17,14 @@
   /*display: none;*/
   color: white;
   margin-top: 17%;
-  margin-left: 10%;
-  /*list-style: square;*/
+  margin-left: 12%;
+  list-style-type: square;
   font-size: 4vw;
   z-index: 4;
+}
+
+#screen-text-ul a{
+  color: white;
 }
 
 #tv-frame-container{

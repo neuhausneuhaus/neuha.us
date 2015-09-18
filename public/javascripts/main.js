@@ -25,6 +25,8 @@ $(document).ready(function(e) {
     e.preventDefault()
     console.log("potato");
     $("iframe").hide();
+    $("#screen-text-title").hide();
+    $("#screen-text-ul").hide();
     $("#loading-gif").show();
     $("#loading-gif").attr("src", "images/loadinggifs/giphy28.gif")
   });
