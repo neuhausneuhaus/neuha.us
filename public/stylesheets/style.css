@@ -1,5 +1,27 @@
 
+.on-screen-text{
+  color: white;
+  opacity: .8;
+  /*display: inline;*/
+}
 
+#screen-text-title{
+  /*display: none;*/
+  margin-top: 2%;
+  font-size: 8vw;
+  text-align: center;
+  z-index: 4;
+}
+
+#screen-text-ul{
+  /*display: none;*/
+  color: white;
+  margin-top: 17%;
+  margin-left: 10%;
+  /*list-style: square;*/
+  font-size: 4vw;
+  z-index: 4;
+}
 
 #tv-frame-container{
   position:relative;
@@ -26,10 +48,10 @@
 .screen-content{
   position: absolute;
   display:none;
-  top:8.5%;
+  top:8.55%;
   left:.3%;
-  width: 68.1%;
-  height: 77.5%;
+  width: 68.55%;
+  height: 77.4%;
   margin-left: 5.7%;
   z-index: 2;
   /*  border-radius: 15px;

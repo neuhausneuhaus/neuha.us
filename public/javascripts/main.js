@@ -10,7 +10,7 @@ $(document).ready(function(e) {
     $('img[usemap]').rwdImageMaps();
 
 
-  $("area[href^=#]").on("click", function(e){
+  $("area[href^=#h]").on("click", function(e){
     e.preventDefault()
     var destination = $(this).attr("href").replace("#", "")
     var dial = $(this).attr("alt")
@@ -19,13 +19,33 @@ $(document).ready(function(e) {
     lightblink();
     printInstructions(dial);
     loadingSequence();
-
   });
+
+  $("area[href=#dial4]").on("click", function(e){
+    e.preventDefault()
+    console.log("potato");
+    $("iframe").hide();
+    $("#loading-gif").show();
+    $("#loading-gif").attr("src", "images/loadinggifs/giphy28.gif")
+  });
+
+  $("area[href=#dial5]").on("click", function(e){
+    e.preventDefault()
+    showcontactinfo()
+  });
+
+
 
 });
 
 
-
+var showcontactinfo = function(){
+  $("iframe").hide();
+  $("#loading-gif").show();
+  $("#loading-gif").attr("src", "/images/loadinggifs/loading4.gif")
+  $("#screen-text-title").show();
+  $("#screen-text-ul").show();
+};
 
 
 // on page load, gif is neuhausneuhaus
@@ -63,6 +83,8 @@ var loadingSequence = function(iframe) {
   var randomLoopGif = function (){
     return "/images/loadinggifs/loading" + Math.floor(Math.random() * (6))+".gif"
   };
+  $("#screen-text-title").hide();
+  $("#screen-text-ul").hide();
 
   $("iframe").load(function() {
     $("#loading-gif").hide();
