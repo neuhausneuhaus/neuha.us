@@ -22,92 +22,49 @@ $(document).ready(function(e) {
     $('img[usemap]').rwdImageMaps();
 
 
-  $("area[href^=#h]").on("click", function(e){
-    e.preventDefault()
-    var destination = $(this).attr("href").replace("#", "")
-    var dial = $(this).attr("alt")
-    $("iframe").attr("src", destination);
-    openPanel();
-    lightblink();
-    printInstructions(dial);
-    loadingSequence();
-  });
+    $("area[href^=#h]").on("click", function(e){
+      e.preventDefault()
+      var destination = $(this).attr("href").replace("#", "")
+      var dial = $(this).attr("alt")
+      $("iframe").attr("src", destination);
+      openPanel();
+      lightblink();
+      printInstructions(dial);
+      loadingSequence();
+    });
 
-  $("area[href=#dial4]").on("click", function(e){
-    e.preventDefault()
-    console.log("potato");
-    $("iframe").hide();
+    $("area[href=#dial4]").on("click", function(e){
+      e.preventDefault()
+      console.log("potato");
+      $("iframe").hide();
+      $("#screen-text-title").hide();
+      $("#screen-text-ul").hide();
+      $("#loading-gif").show();
+      $("#loading-gif").attr("src", "images/loadinggifs/giphy28.gif")
+    });
+
+    $("area[href=#dial5]").on("click", function(e){
+      e.preventDefault()
+      showcontactinfo()
+    });
+
+  var loadingSequence = function() {
+    // #loading-gif attr display inline (or change zindex?)
+
+    var randomGif = function(){
+      return "/images/loadinggifs/giphy" + Math.floor(Math.random() * (38))+".gif";
+    };
+    var randomLoopGif = function (){
+      return "/images/loadinggifs/loading" + Math.floor(Math.random() * (6))+".gif"
+    };
     $("#screen-text-title").hide();
     $("#screen-text-ul").hide();
-    $("#loading-gif").show();
-    $("#loading-gif").attr("src", "images/loadinggifs/giphy28.gif")
-  });
 
-  $("area[href=#dial5]").on("click", function(e){
-    e.preventDefault()
-    showcontactinfo()
-  });
+    $("iframe").load(function() {
+      $("#loading-gif").hide();
+      $("iframe").show();
 
-
-
-});
-
-
-var showcontactinfo = function(){
-  $("iframe").hide();
-  $("#loading-gif").show();
-  $("#loading-gif").attr("src", "/images/loadinggifs/loading4.gif")
-  $("#screen-text-title").show();
-  $("#screen-text-ul").show();
-};
-
-
-// on page load, gif is neuhausneuhaus
-
-var openPanel = function(){
-  $("#panel-cover").attr("class","animated flipOutX");
-}
-
-var lightblink = function(){
-  for (var i=0; i< 500; i++){
-    (function(n){
-      window.setTimeout(function(){
-        $("#red-light").toggle()
-      }, (n*500))
-    })(i)
-  }
-}
-
-var printInstructions = function(dial){
-  if (dial == "dial1"){
-    $("#instruction-content").html(dial1text)
-  } else if (dial == "dial2"){
-    $("#instruction-content").html(dial2text)
-  } else if (dial == "dial3"){
-    $("#instruction-content").html(dial3text)
-  }
-}
-
-var loadingSequence = function(iframe) {
-  // #loading-gif attr display inline (or change zindex?)
-
-  var randomGif = function(){
-    return "/images/loadinggifs/giphy" + Math.floor(Math.random() * (38))+".gif";
-  };
-  var randomLoopGif = function (){
-    return "/images/loadinggifs/loading" + Math.floor(Math.random() * (6))+".gif"
-  };
-  $("#screen-text-title").hide();
-  $("#screen-text-ul").hide();
-
-  $("iframe").load(function() {
-    $("#loading-gif").hide();
-    $("iframe").show();
-
-    // $("#loading-text").hide();//loadeventtest
-    // $("#loaded-text").show();//loadeventtest
-
-  });    
+    });    
 
 
     $("#loading-gif").show();
@@ -122,16 +79,57 @@ var loadingSequence = function(iframe) {
     setTimeout(function(){
       $("#loading-gif").attr("src", randomLoopGif())
     }, 1900);
-    // setTimeout(function(){
-    //   $("#loading-gif").hide();
-    //   $("iframe").show(); 
-    // }, 1900);
+      // setTimeout(function(){
+      //   $("#loading-gif").hide();
+      //   $("iframe").show(); 
+      // }, 1900);
 
 
 
-  // until iframe loaded, short gif, long gif, short gif then looping gif...
-  // #loading-gif attr display none
-}
+    // until iframe loaded, short gif, long gif, short gif then looping gif...
+    // #loading-gif attr display none
+  }
+
+
+
+  var showcontactinfo = function(){
+    $("iframe").hide();
+    $("#loading-gif").show();
+    $("#loading-gif").attr("src", "/images/loadinggifs/loading4.gif")
+    $("#screen-text-title").show();
+    $("#screen-text-ul").show();
+  };
+
+  var printInstructions = function(dial){
+    if (dial == "dial1"){
+      $("#instruction-content").html(dial1text)
+    } else if (dial == "dial2"){
+      $("#instruction-content").html(dial2text)
+    } else if (dial == "dial3"){
+      $("#instruction-content").html(dial3text)
+    }
+  }
+
+  var openPanel = function(){
+    $("#panel-cover").attr("class","animated flipOutX");
+  }
+
+  var lightblink = function(){
+    for (var i=0; i< 500; i++){
+      (function(n){
+        window.setTimeout(function(){
+          $("#red-light").toggle()
+        }, (n*500))
+      })(i)
+    }
+  }
+
+});
+
+
+
+
+
 
 
 // exitSequence()
