@@ -1,8 +1,20 @@
+// Contact screen flicker
+$(document).ready(function() {
+     setInterval(function() {
+            var val = 1;
+            if (Math.random() > 0.5) {
+                val = Math.floor((Math.random()*10)+1);
+            }
+                
+            $(".on-screen-text").css("text-shadow", "white 0 0 " + val + "px");
+     }, 200);
+});
+
+
 // Instructions content:
 var dial1text = "<p>caseworker login: caseworker1@gmail.com<br>password: password1</p><p>donor login: donor1@gmail.com<br>password: password1</p>"
 var dial2text = "<p>professor login: philco@ga.co<br>password: phil</p><p>student login: neuhaus87@gmail.com<br>password: david</p>"
 var dial3text = "Have Fun!</p>"
-
 
 
 
@@ -125,4 +137,29 @@ var loadingSequence = function(iframe) {
 // exitSequence()
   //glitch iframe for 1000ms, then loadingSequence()
 
+
+// Reload rwdimagemap coords on window resize
+(function() {
+
+  window.addEventListener("resize", resizeThrottler, false);
+
+  var resizeTimeout;
+  function resizeThrottler() {
+    // ignore resize events as long as an reloadImageMap execution is in the queue
+    if ( !resizeTimeout ) {
+      resizeTimeout = setTimeout(function() {
+        resizeTimeout = null;
+        reloadImageMap();
+     
+       // The reloadImageMap will execute at a rate of 15fps
+       }, 66);
+    }
+  }
+
+  function reloadImageMap() {
+    console.log("resizing!!!")
+    $('img[usemap]').rwdImageMaps();
+  }
+
+}());
 

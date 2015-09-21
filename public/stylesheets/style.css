@@ -3,7 +3,17 @@
   color: white;
   opacity: .8;
   /*display: inline;*/
+
+ color: transparent;
+ text-shadow: white 0 0 1px;
+
+ -webkit-transition: text-shadow 0.2s ease-in-out;
+ -moz-transition:    text-shadow 0.2s ease-in-out;
+ transition:         text-shadow 0.2s ease-in-out;
+
 }
+
+area{height: auto; max-width: 100%}
 
 #screen-text-title{
   /*display: none;*/
@@ -43,6 +53,7 @@
   position:absolute;
   /*display:none;*/
   top:0;
+  left:0;
   z-index: -2;
   height: 90%;
   /*opacity:10;*/
@@ -63,8 +74,10 @@
   border-top-right-radius: 50% 3.5%;
   border-bottom-left-radius: 50% 3.5%;
   border-bottom-right-radius: 50% 3.5%;*/
-
+  /*mask-box-image: url(../images/screeneffect3.svg);*/
   -webkit-mask-box-image: url(../images/screeneffect3.svg);
+    /*-moz-mask-box-image: url(../images/screeneffect3.svg);*/
+  mask: url(../images/screeneffect31.svg);
 }
 
 #loading-gif{

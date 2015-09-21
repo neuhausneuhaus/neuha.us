@@ -8,7 +8,6 @@
 * http://mattstow.com
 * Licensed under the MIT license
 */
-console.log("rwdimagemap online");
 (function($) {
 	$.fn.rwdImageMaps = function() {
 		var $img = this;
@@ -35,8 +34,14 @@ console.log("rwdimagemap online");
 							w = temp.width;
 						if (!h)
 							h = temp.height;
-					}
 					
+					// Fix for images that don't specify a width or height. // Inserted from open github merge request. See https://github.com/stowball/jQuery-rwdImageMaps/pull/59/files
+						if(!w)
+							w = this.width;
+						if(!h)
+							h = this.height;
+					}
+
 					var wPercent = $that.width()/100,
 						hPercent = $that.height()/100,
 						map = $that.attr('usemap').replace('#', ''),
