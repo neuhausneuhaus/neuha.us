@@ -86,8 +86,10 @@ $(document).ready(function(e) {
     }, 1400);
     // Final phase, loading screen:
     setTimeout(function(){
+      if (!$("iframe").load()){
       $("#loading-gif").attr("src", randomLoopGif());
       $(".loading-text").show();
+    }
     }, 1900);
   }
 
