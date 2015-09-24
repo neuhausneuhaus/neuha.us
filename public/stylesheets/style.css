@@ -15,6 +15,26 @@
 
 area{height: auto; max-width: 100%}
 
+
+.loading-text{
+  font-weight: bold;
+  text-align: center;
+  z-index: 4;
+  color: white;
+  opacity:.8;
+}
+
+#loading-text-top{
+  margin-top: 2%;
+  font-size: 6.5vw;
+}
+
+#loading-text-bottom{
+  margin-top: 36%;
+  font-size: 8vw;
+}
+
+
 #screen-text-title{
   /*display: none;*/
   margin-top: 2%;

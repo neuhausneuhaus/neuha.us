@@ -1,38 +1,39 @@
-// Contact screen flicker
-$(document).ready(function() {
-     setInterval(function() {
-            var val = 1;
-            if (Math.random() > 0.5) {
-                val = Math.floor((Math.random()*10)+1);
-            }
-                
-            $(".on-screen-text").css("text-shadow", "white 0 0 " + val + "px");
-     }, 200);
-});
-
-
-// Instructions content:
+// Instructions Screen content:
 var dial1text = "<p>caseworker login: caseworker1@gmail.com<br>password: password1</p><p>donor login: donor1@gmail.com<br>password: password1</p>"
 var dial2text = "<p>professor login: philco@ga.co<br>password: phil</p><p>student login: neuhaus87@gmail.com<br>password: david</p>"
 var dial3text = "Have Fun!</p>"
 
 
-
 $(document).ready(function(e) {
+    
+    var flicker = function(element){
+    setInterval(function() {
+              var val = 1;
+              if (Math.random() > 0.5) {
+                  val = Math.floor((Math.random()*10)+1);
+              }
+                  
+              element.css("text-shadow", "white 0 0 " + val + "px");
+       }, 200);
+    }
+    
+    // rwdImageMaps resizes area map coords dynamically with width changes
     $('img[usemap]').rwdImageMaps();
 
-
+    // On Project Dial Click:
     $("area[href^=#h]").on("click", function(e){
       e.preventDefault()
       var destination = $(this).attr("href").replace("#", "")
-      var dial = $(this).attr("alt")
+      var dial = $(this).attr("id")
+      var projTitle = $(this).attr("alt")
       $("iframe").attr("src", destination);
       openPanel();
       lightblink();
       printInstructions(dial);
-      loadingSequence();
+      loadingSequence(projTitle);
     });
 
+    // On blank Dial CLick
     $("area[href=#dial4]").on("click", function(e){
       e.preventDefault()
       console.log("potato");
@@ -43,13 +44,16 @@ $(document).ready(function(e) {
       $("#loading-gif").attr("src", "images/loadinggifs/giphy28.gif")
     });
 
+    // On Contact Dial Click
     $("area[href=#dial5]").on("click", function(e){
       e.preventDefault()
       showcontactinfo()
     });
 
-  var loadingSequence = function() {
-    // #loading-gif attr display inline (or change zindex?)
+
+
+  var loadingSequence = function(title) {
+
 
     var randomGif = function(){
       return "/images/loadinggifs/giphy" + Math.floor(Math.random() * (38))+".gif";
@@ -62,12 +66,16 @@ $(document).ready(function(e) {
 
     $("iframe").load(function() {
       $("#loading-gif").hide();
+      $("#loading-text-top").text("");
+      $("#loading-text-bottom").text("");
       $("iframe").show();
-
     });    
 
-
+    $(".loading-text").hide();
     $("#loading-gif").show();
+    $("#loading-text-top").text("loading "+title);
+    $("#loading-text-bottom").text("please stand by");
+    flicker($(".loading-text"));
 
     $("#loading-gif").attr("src", randomGif());
     setTimeout(function(){
@@ -76,18 +84,11 @@ $(document).ready(function(e) {
     setTimeout(function(){
       $("#loading-gif").attr("src", randomGif())
     }, 1400);
+    // Final phase, loading screen:
     setTimeout(function(){
-      $("#loading-gif").attr("src", randomLoopGif())
+      $("#loading-gif").attr("src", randomLoopGif());
+      $(".loading-text").show();
     }, 1900);
-      // setTimeout(function(){
-      //   $("#loading-gif").hide();
-      //   $("iframe").show(); 
-      // }, 1900);
-
-
-
-    // until iframe loaded, short gif, long gif, short gif then looping gif...
-    // #loading-gif attr display none
   }
 
 
@@ -98,6 +99,7 @@ $(document).ready(function(e) {
     $("#loading-gif").attr("src", "/images/loadinggifs/loading4.gif")
     $("#screen-text-title").show();
     $("#screen-text-ul").show();
+    flicker($(".on-screen-text"))
   };
 
   var printInstructions = function(dial){
@@ -132,11 +134,7 @@ $(document).ready(function(e) {
 
 
 
-// exitSequence()
-  //glitch iframe for 1000ms, then loadingSequence()
-
-
-// Reload rwdimagemap coords on window resize
+// Reload rwdimagemap coords on window resize (neccesary for Safari Compatibility)
 (function() {
 
   window.addEventListener("resize", resizeThrottler, false);
